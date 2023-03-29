@@ -1,0 +1,99 @@
+body {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.cube {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  transform: rotateX(30deg);
+  animation: animate 3s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotateX(-30deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+
+.cube div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgb(108, 52, 169), rgb(0, 255, 238));
+}
+
+.cube .left {
+  transform: translateZ(-150px);
+}
+
+.cube .right {
+  transform: translateZ(150px);
+}
+
+.cube .front {
+  transform: rotateY(90deg) translateZ(-150px) translateZ(0px);
+}
+
+.cube .back {
+  transform: translateX(0px) rotateY(90deg) translateZ(150px);
+}
+
+.cube .top {
+  background: rgb(108, 52, 169);
+  border: none;
+  animation: open 6s linear 400ms;
+  transform: translateX(0px) rotateX(90deg) translateZ(150px);
+}
+
+.cube .bottom {
+  background: rgb(0, 255, 238);
+  filter: blur(2em);
+  z-index: -10;
+  border: none;
+  box-shadow: 0 0 110px rgba(0, 255, 238, 0.829), 0 0 110px rgb(0, 255, 238),
+    0 0 110px rgb(0, 255, 238);
+  transform: translateX(0px) rotateX(90deg) translateZ(-250px);
+}
+
+@keyframes open {
+  0% {
+    box-shadow: 0 0 110px rgba(109, 52, 169, 0), 0 0 110 rgba(109, 52, 169, 0);
+    transform: translateX(0px) rotateX(90deg) translateZ(150px);
+    filter: blur(0em);
+  }
+  50% {
+    box-shadow: 0 0 110px rgba(109, 52, 169, 0.995), 0 0 110px rgb(109, 52, 169);
+    transform: translateX(0px) rotateX(90deg) translateZ(350px);
+    filter: blur(0.5em);
+  }
+  80% {
+    box-shadow: 0 0 110px rgba(109, 52, 169, 0.463),
+      0 0 110 rgba(109, 52, 169, 0.501);
+    transform: translateX(0px) rotateX(90deg) translateZ(250px);
+    filter: blur(0.1em);
+  }
+  100% {
+    transform: translateX(0px) rotateX(90deg) translateZ(160px);
+    box-shadow: 0 0 110px rgba(109, 52, 169, 0), 0 0 110px rgba(109, 52, 169, 0);
+  }
+}
